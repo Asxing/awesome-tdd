@@ -7,6 +7,17 @@
 	<groupId>com.holddie</groupId>
 	<artifactId>awesome-tdd</artifactId>
 	<version>1.0.0</version>
+	<modules>
+		<module>junit4-example</module>
+		<module>junit5-example</module>
+		<module>assertj-example</module>
+		<module>hamcrest-example</module>
+		<module>mockito-example</module>
+		<module>powermock-example</module>
+		<module>jsonassert-example</module>
+		<module>jsonpath-example</module>
+		<module>springboot-example</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<properties>
