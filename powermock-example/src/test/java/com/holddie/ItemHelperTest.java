@@ -10,17 +10,17 @@ import org.powermock.modules.junit4.PowerMockRunner;
 /**
  * All usages require @RunWith(PowerMockRunner.class) and @PrepareForTest annotated at class level.
  */
-@RunWith(PowerMockRunner.class) 
+@RunWith(PowerMockRunner.class)
 @PrepareForTest(ItemHelper.class)
 public class ItemHelperTest {
-    
+
     @Test
     public void testDoSomethingWithItem() throws Exception {
         ItemHelper itemHelper = PowerMockito.spy(new ItemHelper());
         PowerMockito.doReturn(new Item(Item.Type.mocked)).when(itemHelper, "createItem");
-        
+
         Item newItem = itemHelper.doSomethingWithItem();
-        
+
         Assert.assertEquals("Item has to be a mocked one", newItem.getType(), Item.Type.mocked);
     }
 }
