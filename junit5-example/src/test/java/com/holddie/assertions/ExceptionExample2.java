@@ -14,7 +14,7 @@ public class ExceptionExample2 {
         assertTrue(exception.getMessage().contains("not found"));
     }
 
-    String findByName(String name) throws NameNotFoundException{
-        throw new NameNotFoundException( name + " not found!");
+    String findByName(String name) throws NameNotFoundException {
+        throw new NameNotFoundException(name + " not found!");
     }
 }

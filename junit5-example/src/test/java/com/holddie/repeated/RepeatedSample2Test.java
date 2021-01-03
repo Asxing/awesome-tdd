@@ -23,5 +23,4 @@ public class RepeatedSample2Test {
         System.out.println("Run math_add_3()");
         assertEquals(2, 1 + 1);
     }
-
 }

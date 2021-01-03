@@ -5,39 +5,40 @@ import org.junit.Test;
 import org.junit.rules.ExternalResource;
 
 public class UsesExternalResource {
-	Server myServer = new Server();
+    Server myServer = new Server();
 
-	@Rule
-	public final ExternalResource resource = new ExternalResource() {
-		@Override
-		protected void before() {
-			myServer.connect();
-		}
+    @Rule
+    public final ExternalResource resource =
+            new ExternalResource() {
+                @Override
+                protected void before() {
+                    myServer.connect();
+                }
 
-		@Override
-		protected void after() {
-			myServer.disconnect();
-		}
-	};
+                @Override
+                protected void after() {
+                    myServer.disconnect();
+                }
+            };
 
-	@Test
-	public void testFoo() {
-		new Client().run(myServer);
-	}
+    @Test
+    public void testFoo() {
+        new Client().run(myServer);
+    }
 
-	private class Server {
-		void connect() {
-			System.out.println("connect");
-		}
+    private class Server {
+        void connect() {
+            System.out.println("connect");
+        }
 
-		void disconnect() {
-			System.out.println("disconnect");
-		}
-	}
+        void disconnect() {
+            System.out.println("disconnect");
+        }
+    }
 
-	private class Client {
-		void run(Server myServer) {
-			System.out.println("myServer");
-		}
-	}
+    private class Client {
+        void run(Server myServer) {
+            System.out.println("myServer");
+        }
+    }
 }

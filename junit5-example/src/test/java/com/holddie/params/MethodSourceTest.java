@@ -32,5 +32,4 @@ public class MethodSourceTest {
     static IntStream rangeProvider() {
         return IntStream.range(0, 10);
     }
-
 }

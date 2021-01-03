@@ -13,42 +13,41 @@ public class CustomerServiceMethodTest {
     @BeforeEach
     void createNewObjectForAll() {
         System.out.println("New CustomerService()");
-        //customerService = new CustomerServiceJDBC();
+        // customerService = new CustomerServiceJDBC();
     }
 
     @Test
     void findOne_with_id() {
-        //customerService.findOneById(2L);
+        // customerService.findOneById(2L);
     }
 
     @Test
     void findOne_with_name() {
-        //customerService.findOneByName(2L);
+        // customerService.findOneByName(2L);
     }
 
     @Test
     void findOne_with_name_regex() {
-        //customerService.findOneByNameRegex("%s");
+        // customerService.findOneByNameRegex("%s");
     }
 
     @Test
     void findAll_with_ids() {
-        //customerService.findAllByIds(Arrays.asList(2, 3, 4));
+        // customerService.findAllByIds(Arrays.asList(2, 3, 4));
     }
 
     @Test
     void findAll_with_name_like() {
-        //customerService.findAllByName("mkyong");
+        // customerService.findAllByName("mkyong");
     }
 
     @Test
     void update_with_new() {
-        //customerService.update(new Customer());
+        // customerService.update(new Customer());
     }
 
     @Test
     void update_with_existing() {
-        //customerService.update(new Customer());
+        // customerService.update(new Customer());
     }
-
 }

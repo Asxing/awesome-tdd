@@ -8,13 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CsvSourceTest {
 
     @ParameterizedTest
-    @CsvSource({
-            "java,      4",
-            "clojure,   7",
-            "python,    6"
-    })
+    @CsvSource({"java,      4", "clojure,   7", "python,    6"})
     void test_Csv(String str, int length) {
         assertEquals(length, str.length());
     }
-
 }

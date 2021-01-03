@@ -8,12 +8,9 @@ public class DisplayNameCustomTest {
 
     @Test
     @DisplayName("Test with spaces, expected ok")
-    void test_spaces_ok() {
-    }
+    void test_spaces_ok() {}
 
     @DisplayName("Test with spaces, expected failed")
     @Test
-    void test_spaces_fail() {
-    }
-
+    void test_spaces_fail() {}
 }

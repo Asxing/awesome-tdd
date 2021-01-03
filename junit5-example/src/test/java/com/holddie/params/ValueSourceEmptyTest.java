@@ -18,7 +18,7 @@ public class ValueSourceEmptyTest {
     @ParameterizedTest(name = "#{index} - isEmpty()? {0}")
     @EmptySource
     @NullSource
-    //@NullAndEmptySource
+    // @NullAndEmptySource
     @ValueSource(strings = {""})
     void test_is_empty_true(String arg) {
         assertTrue(isEmpty(arg));
@@ -29,5 +29,4 @@ public class ValueSourceEmptyTest {
     void test_is_empty_false(String arg) {
         assertFalse(isEmpty(arg));
     }
-
 }

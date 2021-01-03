@@ -12,12 +12,10 @@ import org.junit.jupiter.api.Test;
 public class DisplayNameGenerator2Test {
 
     @Test
-    void test_spaces_ok() {
-    }
+    void test_spaces_ok() {}
 
     @Test
-    void test_spaces_fail() {
-    }
+    void test_spaces_fail() {}
 
     static class CustomDisplayNameGenerator extends DisplayNameGenerator.Standard {
 
@@ -30,12 +28,11 @@ public class DisplayNameGenerator2Test {
         public String generateDisplayNameForNestedClass(Class<?> nestedClass) {
             return super.generateDisplayNameForNestedClass(nestedClass);
         }
-        
+
         @Override
         public String generateDisplayNameForMethod(Class<?> testClass, Method testMethod) {
             String name = testMethod.getName();
             return Arrays.stream(name.split("_")).collect(Collectors.joining(" | "));
         }
     }
-
 }

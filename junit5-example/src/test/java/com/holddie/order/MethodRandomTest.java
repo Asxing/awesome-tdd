@@ -33,5 +33,4 @@ public class MethodRandomTest {
     void testB() {
         assertEquals(2, 1 + 1);
     }
-
 }

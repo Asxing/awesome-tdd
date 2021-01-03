@@ -8,12 +8,11 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 public class HasTempFolder {
-  @Rule
-  public final TemporaryFolder folder = new TemporaryFolder();
+    @Rule public final TemporaryFolder folder = new TemporaryFolder();
 
-  @Test
-  public void testUsingTempFolder() throws IOException {
-    File createdFile = folder.newFile("myfile.txt");
-    File createdFolder = folder.newFolder("subfolder");
-  }
-} 
+    @Test
+    public void testUsingTempFolder() throws IOException {
+        File createdFile = folder.newFile("myfile.txt");
+        File createdFolder = folder.newFolder("subfolder");
+    }
+}

@@ -1,6 +1,5 @@
 package com.holddie.exception;
 
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -10,8 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasProperty;
 
 public class ExpectedExceptionByRuleAnnotation {
-	@Rule
-    public ExpectedException thrown = ExpectedException.none();
+    @Rule public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testDivisionWithException() {
@@ -20,24 +18,22 @@ public class ExpectedExceptionByRuleAnnotation {
         thrown.expectMessage(containsString("/ by zero"));
 
         int i = 1 / 0;
-
     }
 
     @Test
     public void testNameNotFoundException() throws UserNotFoundException {
 
-		//test type
+        // test type
         thrown.expect(UserNotFoundException.class);
 
-		//test message
+        // test message
         thrown.expectMessage(is("Name is empty!"));
 
-        //test detail
-        thrown.expect(hasProperty("errCode"));  //make sure getters n setters are defined.
+        // test detail
+        thrown.expect(hasProperty("errCode")); // make sure getters n setters are defined.
         thrown.expect(hasProperty("errCode", is(666)));
 
         UserService cust = new UserService();
         cust.findByName("");
-
     }
 }

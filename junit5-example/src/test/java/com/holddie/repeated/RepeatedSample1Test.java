@@ -36,5 +36,4 @@ public class RepeatedSample1Test {
         System.out.println("Run math_add_2()");
         assertEquals(2, 1 + 1);
     }
-
 }

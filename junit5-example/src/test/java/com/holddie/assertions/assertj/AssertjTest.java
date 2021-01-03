@@ -28,7 +28,6 @@ public class AssertjTest {
                 .startsWith("I")
                 .endsWith("!")
                 .containsIgnoringCase("mkyong");
-
     }
 
     // assert list
@@ -44,7 +43,6 @@ public class AssertjTest {
                 .contains("Rust", Index.atIndex(1))
                 .contains("Clojure", Index.atIndex(2))
                 .doesNotContain("Node JS");
-
     }
 
     // assert map
@@ -60,8 +58,7 @@ public class AssertjTest {
                 .isEqualToIgnoringCase("mkyong")
                 .startsWith("mkyong");
 
-        assertThat(map).extracting("name")
-                .isEqualTo("mkyong");
+        assertThat(map).extracting("name").isEqualTo("mkyong");
 
         Map<String, Object> map2 = new HashMap<>();
         map2.put("number", 999);
@@ -70,9 +67,7 @@ public class AssertjTest {
                 .hasSize(1)
                 .extractingByKey("number", as(InstanceOfAssertFactories.INTEGER))
                 .isEqualTo(999);
-
     }
-
 
     // assert exception
     @Test
@@ -83,17 +78,16 @@ public class AssertjTest {
                 .hasMessageContaining("zero")
                 .hasMessage("/ by zero");
 
-        assertThatThrownBy(() -> {
-            List<String> list = Arrays.asList("one", "two");
-            list.get(2);
-        })
+        assertThatThrownBy(
+                        () -> {
+                            List<String> list = Arrays.asList("one", "two");
+                            list.get(2);
+                        })
                 .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("Index 2 out of bounds");
-
     }
 
     int divide(int input, int divide) {
         return input / divide;
     }
-
 }

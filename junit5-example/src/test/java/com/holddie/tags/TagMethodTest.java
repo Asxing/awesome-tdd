@@ -26,5 +26,4 @@ public class TagMethodTest {
     void testSlow() {
         assertEquals(2, 1 + 1);
     }
-
 }

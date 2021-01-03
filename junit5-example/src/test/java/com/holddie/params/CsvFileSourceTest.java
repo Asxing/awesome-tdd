@@ -13,5 +13,4 @@ public class CsvFileSourceTest {
     void test_csv_file(String str, int length) {
         assertEquals(length, str.length());
     }
-
 }

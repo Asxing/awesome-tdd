@@ -30,5 +30,4 @@ public class OperatingSystemTest {
     void notOnWindowsOrAixOrSolarisOrMac() {
         System.out.println("Do not run this on Windows, AIX, Solaris or MAC!");
     }
-
 }

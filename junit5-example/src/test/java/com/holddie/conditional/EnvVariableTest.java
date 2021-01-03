@@ -25,7 +25,8 @@ public class EnvVariableTest {
     @Test
     @DisabledIfEnvironmentVariable(named = "CURRENT_ENV", matches = ".*development.*")
     void notOnDeveloperPC() {
-        System.out.println("Do not run this if env variables 'CURRENT_ENV' matches .*development.* ");
+        System.out.println(
+                "Do not run this if env variables 'CURRENT_ENV' matches .*development.* ");
     }
 
     @Disabled("print environment variables.")
@@ -34,6 +35,4 @@ public class EnvVariableTest {
         Map<String, String> env = System.getenv();
         env.forEach((k, v) -> System.out.println(k + ":" + v));
     }
-
-
 }

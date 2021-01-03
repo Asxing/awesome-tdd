@@ -15,7 +15,6 @@ public class ParameterCountOrder implements MethodOrderer {
     public void orderMethods(MethodOrdererContext context) {
 
         context.getMethodDescriptors().sort(comparator.reversed());
-        //context.getMethodDescriptors().sort(comparator);
+        // context.getMethodDescriptors().sort(comparator);
     }
-
 }

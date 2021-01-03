@@ -1,4 +1,3 @@
 package com.holddie.service;
 
-public interface CustomerService {
-}
+public interface CustomerService {}

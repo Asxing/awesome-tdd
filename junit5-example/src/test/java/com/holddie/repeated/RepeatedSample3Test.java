@@ -12,5 +12,4 @@ public class RepeatedSample3Test {
         System.out.println("Repetition #" + repetitionInfo.getCurrentRepetition());
         assertEquals(3, repetitionInfo.getTotalRepetitions());
     }
-
 }

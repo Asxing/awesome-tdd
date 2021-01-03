@@ -12,13 +12,11 @@ public class TimeOutExample1 {
     @BeforeEach
     @Timeout(5)
     void setUpDB() throws InterruptedException {
-        //TimeUnit.SECONDS.sleep(10);
+        // TimeUnit.SECONDS.sleep(10);
     }
 
     // timed out after 500 miliseconds
     @Test
     @Timeout(value = 500, unit = TimeUnit.MILLISECONDS)
-    void test_this() {
-    }
-
+    void test_this() {}
 }

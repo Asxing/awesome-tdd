@@ -11,17 +11,16 @@ public class CustomerServiceFindAllTest {
     @BeforeEach
     void createNewObjectForAll() {
         System.out.println("New CustomerService()");
-        //customerService = new CustomerServiceJDBC();
+        // customerService = new CustomerServiceJDBC();
     }
 
     @Test
     void findAll_with_ids() {
-        //customerService.findAllByIds(Arrays.asList(2, 3, 4));
+        // customerService.findAllByIds(Arrays.asList(2, 3, 4));
     }
 
     @Test
     void findAll_with_name_likeY() {
-        //customerService.findAllByName("mkyong");
+        // customerService.findAllByName("mkyong");
     }
-    
 }

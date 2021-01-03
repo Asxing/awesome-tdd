@@ -13,21 +13,16 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class DisplayNameParamTest {
 
     @ParameterizedTest(name = "#{index} - Test with TimeUnit: {0}")
-    @EnumSource(value = TimeUnit.class, names = {"MINUTES", "SECONDS"})
-    void test_timeunit_ok(TimeUnit time) {
-    }
-
+    @EnumSource(
+            value = TimeUnit.class,
+            names = {"MINUTES", "SECONDS"})
+    void test_timeunit_ok(TimeUnit time) {}
 
     @ParameterizedTest(name = "#{index} - Test with {0} and {1}")
     @MethodSource("argumentProvider")
-    void test_method_multi(String str, int length) {
-    }
+    void test_method_multi(String str, int length) {}
 
     static Stream<Arguments> argumentProvider() {
-        return Stream.of(
-                arguments("abc", 3),
-                arguments("lemon", 2)
-        );
+        return Stream.of(arguments("abc", 3), arguments("lemon", 2));
     }
-
 }

@@ -37,5 +37,4 @@ public class MethodOrderTest {
     void test4() {
         assertEquals(2, 1 + 1);
     }
-
 }

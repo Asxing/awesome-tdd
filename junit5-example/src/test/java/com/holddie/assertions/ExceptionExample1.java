@@ -17,7 +17,6 @@ public class ExceptionExample1 {
         assertEquals("/ by zero", exception.getMessage());
 
         assertTrue(exception.getMessage().contains("zero"));
-
     }
 
     int divide(int input, int divide) {

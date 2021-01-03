@@ -11,26 +11,26 @@ import static org.junit.experimental.results.ResultMatchers.isSuccessful;
 
 public class UsesVerifier {
 
-	private static String sequence;
+    private static String sequence;
 
-	@Rule
-	public final Verifier collector = new Verifier() {
-		@Override
-		protected void verify() {
-			sequence += "verify ";
-		}
-	};
+    @Rule
+    public final Verifier collector =
+            new Verifier() {
+                @Override
+                protected void verify() {
+                    sequence += "verify ";
+                }
+            };
 
-	@Test
-	public void example() {
-		sequence += "test ";
-	}
+    @Test
+    public void example() {
+        sequence += "test ";
+    }
 
-	@Test
-	public void verifierRunsAfterTest() {
-		sequence = "";
-		assertThat(testResult(UsesVerifier.class), isSuccessful());
-		assertEquals("test verify ", sequence);
-	}
-
+    @Test
+    public void verifierRunsAfterTest() {
+        sequence = "";
+        assertThat(testResult(UsesVerifier.class), isSuccessful());
+        assertEquals("test verify ", sequence);
+    }
 }

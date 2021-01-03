@@ -12,5 +12,4 @@ public class ArgumentsSourceTest {
     void test_argument_custom(String arg) {
         assertNotNull(arg);
     }
-
 }

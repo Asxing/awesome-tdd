@@ -23,5 +23,4 @@ public class TimeOutExample2 {
             e.printStackTrace();
         }
     }
-
 }

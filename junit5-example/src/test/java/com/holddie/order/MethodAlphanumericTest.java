@@ -33,5 +33,4 @@ public class MethodAlphanumericTest {
     void testB() {
         assertEquals(2, 1 + 1);
     }
-
 }

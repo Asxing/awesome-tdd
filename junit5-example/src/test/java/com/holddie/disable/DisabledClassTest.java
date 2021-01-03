@@ -17,5 +17,4 @@ public class DisabledClassTest {
     void test2Plus2() {
         assertEquals(4, 2 + 2);
     }
-
 }

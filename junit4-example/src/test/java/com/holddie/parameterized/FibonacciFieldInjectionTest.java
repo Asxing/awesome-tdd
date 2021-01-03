@@ -14,19 +14,20 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class FibonacciFieldInjectionTest {
-	@Parameters
-	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] { { 0, 0 }, { 1, 1 }, { 2, 1 }, { 3, 2 }, { 4, 3 }, { 5, 5 }, { 6, 8 } });
-	}
+    @Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(
+                new Object[][] {{0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 3}, {5, 5}, {6, 8}});
+    }
 
-	@Parameter // first data value (0) is default
-	public /* NOT private */ int fInput;
+    @Parameter // first data value (0) is default
+    public /* NOT private */ int fInput;
 
-	@Parameter(1)
-	public /* NOT private */ int fExpected;
+    @Parameter(1)
+    public /* NOT private */ int fExpected;
 
-	@Test
-	public void test() {
-		assertEquals(fExpected, Fibonacci.compute(fInput));
-	}
+    @Test
+    public void test() {
+        assertEquals(fExpected, Fibonacci.compute(fInput));
+    }
 }

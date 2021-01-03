@@ -24,8 +24,6 @@ public class MethodSourceMultiTest {
     static Stream<Arguments> stringIntAndListProvider() {
         return Stream.of(
                 arguments("abc", 3, Arrays.asList("a", "b", "c")),
-                arguments("lemon", 2, Arrays.asList("x", "y"))
-        );
+                arguments("lemon", 2, Arrays.asList("x", "y")));
     }
-
 }

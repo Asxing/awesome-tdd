@@ -8,11 +8,8 @@ import org.junit.jupiter.api.Test;
 public class DisplayNameGenerator1Test {
 
     @Test
-    void test_spaces_ok() {
-    }
+    void test_spaces_ok() {}
 
     @Test
-    void test_spaces_fail() {
-    }
-
+    void test_spaces_fail() {}
 }

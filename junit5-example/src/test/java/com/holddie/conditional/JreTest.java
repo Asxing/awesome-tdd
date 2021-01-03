@@ -24,5 +24,4 @@ public class JreTest {
     void notOnJava9() {
         System.out.println("Do not run this on Java 9");
     }
-
 }

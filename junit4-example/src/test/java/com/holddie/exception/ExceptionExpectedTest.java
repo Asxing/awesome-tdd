@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class ExceptionExpectedTest {
-	@Test(expected = ArithmeticException.class)
+    @Test(expected = ArithmeticException.class)
     public void testDivisionWithException() {
         int i = 1 / 0;
     }

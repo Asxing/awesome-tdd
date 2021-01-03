@@ -17,5 +17,4 @@ public class DisabledMethodTest {
     void test3Plus3() {
         assertEquals(6, 3 + 3);
     }
-
 }

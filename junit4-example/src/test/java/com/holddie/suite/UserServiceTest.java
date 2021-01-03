@@ -8,22 +8,21 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class UserServiceTest {
-	private User user;
-	private UserService userService = new UserService();
-	
-	@Before
-	public void setup(){
-		user = new User(100, "ramesh");
-	}
-	
-	@Test
-	public void userServiceTest(){
-		userService.createUser(user);
-		List<User> users = userService.getUsers();
-		assertEquals(1, users.size());
-		userService.deleteUser(user);
-		users = userService.getUsers();
-		assertEquals(0, users.size());
-	}
-	
+    private User user;
+    private UserService userService = new UserService();
+
+    @Before
+    public void setup() {
+        user = new User(100, "ramesh");
+    }
+
+    @Test
+    public void userServiceTest() {
+        userService.createUser(user);
+        List<User> users = userService.getUsers();
+        assertEquals(1, users.size());
+        userService.deleteUser(user);
+        users = userService.getUsers();
+        assertEquals(0, users.size());
+    }
 }

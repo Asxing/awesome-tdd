@@ -17,11 +17,15 @@ public class AssumptionsTest {
         assertEquals(2, 1 + 1);
     }
 
-    // Output: org.opentest4j.TestAbortedException: Assumption failed: Aborting test: not on developer environment
-    @DisplayName("Run this if `assumeTrue` condition is true, else aborting this test (Custom Message)")
+    // Output: org.opentest4j.TestAbortedException: Assumption failed: Aborting test: not on
+    // developer environment
+    @DisplayName(
+            "Run this if `assumeTrue` condition is true, else aborting this test (Custom Message)")
     @Test
     void testOnlyOnDevEnvElseAbortWithCustomMsg() {
-        assumeTrue("DEV".equals(System.getenv("APP_MODE")), () -> "Aborting test: not on developer environment");
+        assumeTrue(
+                "DEV".equals(System.getenv("APP_MODE")),
+                () -> "Aborting test: not on developer environment");
         assertEquals(2, 1 + 1);
     }
 
@@ -31,7 +35,8 @@ public class AssumptionsTest {
         // run these assertions always, just like normal test
         assertEquals(2, 1 + 1);
 
-        assumingThat("DEV".equals(System.getenv("APP_MODE")),
+        assumingThat(
+                "DEV".equals(System.getenv("APP_MODE")),
                 () -> {
                     // run this only if assumingThat condition is true
                     assertEquals(2, 1 + 1);
@@ -39,7 +44,5 @@ public class AssumptionsTest {
 
         // run these assertions always, just like normal test
         assertEquals(2, 1 + 1);
-
     }
-
 }

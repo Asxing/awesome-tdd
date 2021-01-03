@@ -25,5 +25,4 @@ public class ValueSourceTest {
     void test_string_arrays_custom_name(String arg) {
         assertTrue(arg.length() > 1);
     }
-
 }

@@ -28,5 +28,4 @@ public class SystemPropertyTest {
         Properties properties = System.getProperties();
         properties.forEach((k, v) -> System.out.println(k + ":" + v));
     }
-
 }
