@@ -1,14 +1,15 @@
 /**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
  *
- * Copyright 2012-2016 the original author or authors.
+ * <p>Copyright 2012-2016 the original author or authors.
  */
 package org.assertj.examples.db;
 
@@ -127,13 +128,11 @@ public class NavigationExamples extends AbstractAssertionsExamples {
     @Test
     public void basic_navigation_examples_for_changes() throws SQLException {
         Changes changes = new Changes(dataSource);
-        changes
-                .setStartPointNow(); // Start point (the moment when the changes start to be taken
-                                     // into account)
+        changes.setStartPointNow(); // Start point (the moment when the changes start to be taken
+        // into account)
         makeChangesInTheData();
-        changes
-                .setEndPointNow(); // End point (the moment when the changes stop to be taken into
-                                   // account)
+        changes.setEndPointNow(); // End point (the moment when the changes stop to be taken into
+        // account)
 
         assertThat(changes)
                 .change() // First change
@@ -151,18 +150,17 @@ public class NavigationExamples extends AbstractAssertionsExamples {
                 .change() // Next change
                 .rowAtEndPoint() // Row at end point of this change
                 .hasValues(1, "Hewson", "Paul David", "Bono Vox", "1960-05-10", 1.75)
-                .column(
-                        "surname") // Column with name is "surname" of the second change (note that
-                                   // returnToChange() is not mandatory)
+                .column("surname") // Column with name is "surname" of the second change (note that
+                // returnToChange() is not mandatory)
                 .isModified() // Assertion on column
                 .hasValues("Bono", "Bono Vox")
                 .column() // Next column
                 .isNotModified() // Assertion on the column
                 .valueAtEndPoint() // Value at end point in the column after "surname" ("birth") of
-                                   // the second change
+                // the second change
                 .isEqualTo(DateValue.of(1960, 5, 10))
                 .ofDeletion() // All the changes of deletion (note that the returnToXxxx() methods
-                              // are not mandatory)
+                // are not mandatory)
                 .change() // First change of these changes of deletion
                 .isOnTable("albums")
                 .hasPksValues(15)

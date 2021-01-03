@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,97 +39,92 @@ import org.junit.Test;
 
 public class IsJsonArrayTest {
 
-  private static final JsonNodeFactory NF = JsonNodeFactory.instance;
+    private static final JsonNodeFactory NF = JsonNodeFactory.instance;
 
-  @Test
-  public void testType() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray();
+    @Test
+    public void testType() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray();
 
-    assertThat(NF.arrayNode(), is(sut));
-  }
+        assertThat(NF.arrayNode(), is(sut));
+    }
 
-  @Test
-  public void testEmptyIterable() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(emptyIterable());
+    @Test
+    public void testEmptyIterable() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(emptyIterable());
 
-    assertThat(NF.arrayNode(), is(sut));
-  }
+        assertThat(NF.arrayNode(), is(sut));
+    }
 
-  @Test
-  public void testEmpty() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(empty());
+    @Test
+    public void testEmpty() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(empty());
 
-    assertThat(NF.arrayNode(), is(sut));
-  }
+        assertThat(NF.arrayNode(), is(sut));
+    }
 
-  @Test
-  public void testLiteral() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(NF.arrayNode().add(1).add(2));
+    @Test
+    public void testLiteral() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(NF.arrayNode().add(1).add(2));
 
-    assertThat(NF.arrayNode().add(1).add(2), is(sut));
-  }
+        assertThat(NF.arrayNode().add(1).add(2), is(sut));
+    }
 
-  @SuppressWarnings("unchecked")
-  @Test
-  public void testContains() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(contains(jsonText("a"), jsonInt(1)));
+    @SuppressWarnings("unchecked")
+    @Test
+    public void testContains() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(contains(jsonText("a"), jsonInt(1)));
 
-    assertThat(NF.arrayNode().add("a").add(1), is(sut));
-  }
+        assertThat(NF.arrayNode().add("a").add(1), is(sut));
+    }
 
-  @SuppressWarnings("unchecked")
-  @Test
-  public void testContainsInAnyOrder() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(containsInAnyOrder(jsonText("a"), jsonInt(1)));
+    @SuppressWarnings("unchecked")
+    @Test
+    public void testContainsInAnyOrder() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(containsInAnyOrder(jsonText("a"), jsonInt(1)));
 
-    assertThat(NF.arrayNode().add(1).add("a"), is(sut));
-  }
+        assertThat(NF.arrayNode().add(1).add("a"), is(sut));
+    }
 
-  @Test
-  public void testMismatchElements() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(contains(jsonText("a")));
+    @Test
+    public void testMismatchElements() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(contains(jsonText("a")));
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.arrayNode().add(1), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.arrayNode().add(1), description);
 
-    assertThat(description.toString(), is(
-        "was an array node whose elements item 0: was not a string node, but a number node"
-    ));
-  }
+        assertThat(
+                description.toString(),
+                is(
+                        "was an array node whose elements item 0: was not a string node, but a number node"));
+    }
 
-  @Test
-  public void testMismatchType() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(contains(jsonText("a")));
+    @Test
+    public void testMismatchType() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(contains(jsonText("a")));
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.booleanNode(false), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.booleanNode(false), description);
 
-    assertThat(description.toString(), is(
-        "was not an array node, but a boolean node"
-    ));
-  }
+        assertThat(description.toString(), is("was not an array node, but a boolean node"));
+    }
 
-  @Test
-  public void testDescription() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray(is(anything()));
+    @Test
+    public void testDescription() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray(is(anything()));
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "an array node whose elements is ANYTHING"
-    ));
-  }
+        assertThat(description.toString(), is("an array node whose elements is ANYTHING"));
+    }
 
-  @Test
-  public void testDescriptionForEmptyConstructor() throws Exception {
-    final Matcher<JsonNode> sut = jsonArray();
+    @Test
+    public void testDescriptionForEmptyConstructor() throws Exception {
+        final Matcher<JsonNode> sut = jsonArray();
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "an array node whose elements is ANYTHING"
-    ));
-  }
+        assertThat(description.toString(), is("an array node whose elements is ANYTHING"));
+    }
 }

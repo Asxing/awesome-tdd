@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,81 +32,73 @@ import org.junit.Test;
 
 public class IsJsonBooleanTest {
 
-  private static final JsonNodeFactory NF = JsonNodeFactory.instance;
+    private static final JsonNodeFactory NF = JsonNodeFactory.instance;
 
-  @Test
-  public void testType() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean();
+    @Test
+    public void testType() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean();
 
-    assertThat(NF.booleanNode(false), is(sut));
-  }
+        assertThat(NF.booleanNode(false), is(sut));
+    }
 
-  @Test
-  public void testLiteral() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean(NF.booleanNode(false));
+    @Test
+    public void testLiteral() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean(NF.booleanNode(false));
 
-    assertThat(NF.booleanNode(false), is(sut));
-  }
+        assertThat(NF.booleanNode(false), is(sut));
+    }
 
-  @Test
-  public void testMatchValue() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean(false);
+    @Test
+    public void testMatchValue() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean(false);
 
-    assertThat(NF.booleanNode(false), is(sut));
-  }
+        assertThat(NF.booleanNode(false), is(sut));
+    }
 
-  @Test
-  public void testMatchMatcher() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean(is(false));
+    @Test
+    public void testMatchMatcher() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean(is(false));
 
-    assertThat(NF.booleanNode(false), is(sut));
-  }
+        assertThat(NF.booleanNode(false), is(sut));
+    }
 
-  @Test
-  public void testMismatchValue() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean(false);
+    @Test
+    public void testMismatchValue() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean(false);
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.booleanNode(true), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.booleanNode(true), description);
 
-    assertThat(description.toString(), is(
-        "was a boolean node with value that was <true>"
-    ));
-  }
+        assertThat(description.toString(), is("was a boolean node with value that was <true>"));
+    }
 
-  @Test
-  public void testMismatchType() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean(false);
+    @Test
+    public void testMismatchType() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean(false);
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.textNode("goat"), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.textNode("goat"), description);
 
-    assertThat(description.toString(), is(
-        "was not a boolean node, but a string node"
-    ));
-  }
+        assertThat(description.toString(), is("was not a boolean node, but a string node"));
+    }
 
-  @Test
-  public void testDescription() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean(false);
+    @Test
+    public void testDescription() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean(false);
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "a boolean node with value that is <false>"
-    ));
-  }
+        assertThat(description.toString(), is("a boolean node with value that is <false>"));
+    }
 
-  @Test
-  public void testDescriptionForEmptyConstructor() throws Exception {
-    final Matcher<JsonNode> sut = jsonBoolean();
+    @Test
+    public void testDescriptionForEmptyConstructor() throws Exception {
+        final Matcher<JsonNode> sut = jsonBoolean();
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "a boolean node with value that is ANYTHING"
-    ));
-  }
+        assertThat(description.toString(), is("a boolean node with value that is ANYTHING"));
+    }
 }

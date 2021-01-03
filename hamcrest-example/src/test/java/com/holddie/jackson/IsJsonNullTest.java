@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,51 +33,46 @@ import org.junit.Test;
 
 public class IsJsonNullTest {
 
-  private static final JsonNodeFactory NF = JsonNodeFactory.instance;
+    private static final JsonNodeFactory NF = JsonNodeFactory.instance;
 
-  @Test
-  public void testType() throws Exception {
-    final Matcher<JsonNode> sut = jsonNull();
+    @Test
+    public void testType() throws Exception {
+        final Matcher<JsonNode> sut = jsonNull();
 
-    assertThat(NullNode.getInstance(), is(sut));
-  }
+        assertThat(NullNode.getInstance(), is(sut));
+    }
 
-  @Test
-  public void testLiteral() throws Exception {
-    final Matcher<JsonNode> sut = jsonNull(NF.nullNode());
+    @Test
+    public void testLiteral() throws Exception {
+        final Matcher<JsonNode> sut = jsonNull(NF.nullNode());
 
-    assertThat(NF.nullNode(), is(sut));
-  }
+        assertThat(NF.nullNode(), is(sut));
+    }
 
-  @Test
-  public void testMatch() throws Exception {
-    final Matcher<JsonNode> sut = jsonNull();
+    @Test
+    public void testMatch() throws Exception {
+        final Matcher<JsonNode> sut = jsonNull();
 
-    assertThat(NF.nullNode(), is(sut));
-  }
+        assertThat(NF.nullNode(), is(sut));
+    }
 
-  @Test
-  public void testMismatchType() throws Exception {
-    final Matcher<JsonNode> sut = jsonNull();
+    @Test
+    public void testMismatchType() throws Exception {
+        final Matcher<JsonNode> sut = jsonNull();
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.textNode("goat"), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.textNode("goat"), description);
 
-    assertThat(description.toString(), is(
-        "was not a null node, but a string node"
-    ));
-  }
+        assertThat(description.toString(), is("was not a null node, but a string node"));
+    }
 
-  @Test
-  public void testDescription() throws Exception {
-    final Matcher<JsonNode> sut = jsonNull();
+    @Test
+    public void testDescription() throws Exception {
+        final Matcher<JsonNode> sut = jsonNull();
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "a null node"
-    ));
-  }
-
+        assertThat(description.toString(), is("a null node"));
+    }
 }

@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,50 +42,51 @@ import org.junit.Test;
 
 public class CompletableFutureMatchersTest {
 
-  @Test
-  public void exceptional() {
-    final RuntimeException ex = new RuntimeException("oops");
+    @Test
+    public void exceptional() {
+        final RuntimeException ex = new RuntimeException("oops");
 
-    final CompletableFuture<String> cf = new CompletableFuture<>();
-    cf.completeExceptionally(ex);
+        final CompletableFuture<String> cf = new CompletableFuture<>();
+        cf.completeExceptionally(ex);
 
-    assertThat(cf, stageCompletedWithException());
-    assertThat(cf, stageCompletedWithExceptionThat(is(sameInstance(ex))));
-    assertThat(cf, stageCompletedWithExceptionThat(isA(RuntimeException.class)));
-    assertThat(cf, stageWillCompleteWithException());
-    assertThat(cf, stageWillCompleteWithExceptionThat(is(sameInstance(ex))));
-    assertThat(cf, stageWillCompleteWithExceptionThat(isA(RuntimeException.class)));
-  }
+        assertThat(cf, stageCompletedWithException());
+        assertThat(cf, stageCompletedWithExceptionThat(is(sameInstance(ex))));
+        assertThat(cf, stageCompletedWithExceptionThat(isA(RuntimeException.class)));
+        assertThat(cf, stageWillCompleteWithException());
+        assertThat(cf, stageWillCompleteWithExceptionThat(is(sameInstance(ex))));
+        assertThat(cf, stageWillCompleteWithExceptionThat(isA(RuntimeException.class)));
+    }
 
-  @Test
-  public void success() {
-    final CompletableFuture<String> cf = CompletableFuture.completedFuture("hi");
+    @Test
+    public void success() {
+        final CompletableFuture<String> cf = CompletableFuture.completedFuture("hi");
 
-    assertThat(cf, not(stageCompletedWithException()));
-    assertThat(cf, not(stageCompletedWithExceptionThat(isA(Throwable.class))));
-    assertThat(cf, stageCompletedWithValue());
-    assertThat(cf, stageCompletedWithValueThat(not(nullValue())));
-    assertThat(cf, stageCompletedWithValueThat(notNullValue()));
-    assertThat(cf, stageCompletedWithValueThat(equalTo("hi")));
+        assertThat(cf, not(stageCompletedWithException()));
+        assertThat(cf, not(stageCompletedWithExceptionThat(isA(Throwable.class))));
+        assertThat(cf, stageCompletedWithValue());
+        assertThat(cf, stageCompletedWithValueThat(not(nullValue())));
+        assertThat(cf, stageCompletedWithValueThat(notNullValue()));
+        assertThat(cf, stageCompletedWithValueThat(equalTo("hi")));
 
-    assertThat(cf, not(stageWillCompleteWithException()));
-    assertThat(cf, not(stageWillCompleteWithExceptionThat(isA(Throwable.class))));
-    assertThat(cf, stageWillCompleteWithValue());
-    assertThat(cf, stageWillCompleteWithValueThat(not(nullValue())));
-    assertThat(cf, stageWillCompleteWithValueThat(notNullValue()));
-    assertThat(cf, stageWillCompleteWithValueThat(equalTo("hi")));
-  }
+        assertThat(cf, not(stageWillCompleteWithException()));
+        assertThat(cf, not(stageWillCompleteWithExceptionThat(isA(Throwable.class))));
+        assertThat(cf, stageWillCompleteWithValue());
+        assertThat(cf, stageWillCompleteWithValueThat(not(nullValue())));
+        assertThat(cf, stageWillCompleteWithValueThat(notNullValue()));
+        assertThat(cf, stageWillCompleteWithValueThat(equalTo("hi")));
+    }
 
-  @Test
-  public void completedWithValueWhenExceptional() {
-    final RuntimeException ex = new RuntimeException("oops");
+    @Test
+    public void completedWithValueWhenExceptional() {
+        final RuntimeException ex = new RuntimeException("oops");
 
-    final CompletableFuture<String> cf = new CompletableFuture<>();
-    cf.completeExceptionally(ex);
+        final CompletableFuture<String> cf = new CompletableFuture<>();
+        cf.completeExceptionally(ex);
 
-    // ensure that the completedWithValue matcher correctly returns false from the matches() method
-    // - this will fail if an exception is thrown instead
-    assertThat(cf, not(stageCompletedWithValue()));
-    assertThat(cf, not(stageWillCompleteWithValue()));
-  }
+        // ensure that the completedWithValue matcher correctly returns false from the matches()
+        // method
+        // - this will fail if an exception is thrown instead
+        assertThat(cf, not(stageCompletedWithValue()));
+        assertThat(cf, not(stageWillCompleteWithValue()));
+    }
 }

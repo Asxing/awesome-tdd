@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,21 +30,21 @@ import org.junit.Test;
 
 public class EmptyOptionalTest {
 
-  private static final Matcher<Optional<Object>> SUT = OptionalMatchers.emptyOptional();
+    private static final Matcher<Optional<Object>> SUT = OptionalMatchers.emptyOptional();
 
-  @Test
-  public void testMismatchFormatting() throws Exception {
-    final StringDescription description = new StringDescription();
-    SUT.describeMismatch(Optional.of(1), description);
+    @Test
+    public void testMismatchFormatting() throws Exception {
+        final StringDescription description = new StringDescription();
+        SUT.describeMismatch(Optional.of(1), description);
 
-    assertThat(description.toString(), is("was present with <1>"));
-  }
+        assertThat(description.toString(), is("was present with <1>"));
+    }
 
-  @Test
-  public void testDescriptionFormatting() throws Exception {
-    final StringDescription description = new StringDescription();
-    SUT.describeTo(description);
+    @Test
+    public void testDescriptionFormatting() throws Exception {
+        final StringDescription description = new StringDescription();
+        SUT.describeTo(description);
 
-    assertThat(description.toString(), is("an Optional that's empty"));
-  }
+        assertThat(description.toString(), is("an Optional that's empty"));
+    }
 }
