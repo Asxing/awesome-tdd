@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -37,58 +37,54 @@ import org.junit.Test;
 
 public class IsJsonStringMatchingTest {
 
-  @Test
-  public void invalidJsonDoesNotMatch() throws Exception {
-    final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
+    @Test
+    public void invalidJsonDoesNotMatch() throws Exception {
+        final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
 
-    assertThat("{", not(sut));
-  }
+        assertThat("{", not(sut));
+    }
 
-  @Test
-  public void testDescription() throws Exception {
-    final Matcher<String> sut = isJsonStringMatching(jsonObject());
+    @Test
+    public void testDescription() throws Exception {
+        final Matcher<String> sut = isJsonStringMatching(jsonObject());
 
-    final Description description = new StringDescription();
-    sut.describeTo(description);
+        final Description description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "A JSON string that matches {\n"
-        + "}")
-    );
-  }
+        assertThat(description.toString(), is("A JSON string that matches {\n" + "}"));
+    }
 
-  @Test
-  public void testNull() throws Exception {
-    final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
+    @Test
+    public void testNull() throws Exception {
+        final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
 
-    assertThat(null, not(sut));
-  }
+        assertThat(null, not(sut));
+    }
 
-  @Test
-  public void validJsonMatchesAnything() throws Exception {
-    final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
+    @Test
+    public void validJsonMatchesAnything() throws Exception {
+        final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
 
-    assertThat("{}", sut);
-  }
+        assertThat("{}", sut);
+    }
 
-  @Test
-  public void validJsonMatchesAnObject() throws Exception {
-    assertThat("{}", isJsonStringMatching(jsonObject()));
-  }
+    @Test
+    public void validJsonMatchesAnObject() throws Exception {
+        assertThat("{}", isJsonStringMatching(jsonObject()));
+    }
 
-  @Test
-  public void testJsonInt() throws Exception {
-    assertThat("123", isJsonStringMatching(jsonInt(123)));
-  }
+    @Test
+    public void testJsonInt() throws Exception {
+        assertThat("123", isJsonStringMatching(jsonInt(123)));
+    }
 
-  @Test
-  public void invalidJsonDescription() throws Exception {
-    final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
+    @Test
+    public void invalidJsonDescription() throws Exception {
+        final Matcher<String> sut = isJsonStringMatching(any(JsonNode.class));
 
-    final Description description = new StringDescription();
-    sut.describeMismatch("{", description);
+        final Description description = new StringDescription();
+        sut.describeMismatch("{", description);
 
-    assertThat(description.toString(), containsString("but the string was not valid JSON"));
-  }
-
+        assertThat(description.toString(), containsString("but the string was not valid JSON"));
+    }
 }

@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,32 +29,32 @@ import org.hamcrest.Description;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
 public abstract class AbstractJsonNodeMatcher<A extends JsonNode>
-    extends TypeSafeDiagnosingMatcher<JsonNode> {
+        extends TypeSafeDiagnosingMatcher<JsonNode> {
 
-  private final JsonNodeType type;
+    private final JsonNodeType type;
 
-  AbstractJsonNodeMatcher(final JsonNodeType type) {
-    super(JsonNode.class);
-    this.type = Objects.requireNonNull(type);
-  }
-
-  @Override
-  protected boolean matchesSafely(JsonNode item, Description mismatchDescription) {
-    if (item.getNodeType() == type) {
-      @SuppressWarnings("unchecked")
-      final A node = (A) item;
-
-      return matchesNode(node, mismatchDescription);
-    } else {
-      mismatchDescription
-          .appendText("was not ")
-          .appendText(LanguageUtils.addArticle(type.name().toLowerCase()))
-          .appendText(" node, but ")
-          .appendText(LanguageUtils.addArticle(item.getNodeType().name().toLowerCase()))
-          .appendText(" node");
-      return false;
+    AbstractJsonNodeMatcher(final JsonNodeType type) {
+        super(JsonNode.class);
+        this.type = Objects.requireNonNull(type);
     }
-  }
 
-  protected abstract boolean matchesNode(A node, Description mismatchDescription);
+    @Override
+    protected boolean matchesSafely(JsonNode item, Description mismatchDescription) {
+        if (item.getNodeType() == type) {
+            @SuppressWarnings("unchecked")
+            final A node = (A) item;
+
+            return matchesNode(node, mismatchDescription);
+        } else {
+            mismatchDescription
+                    .appendText("was not ")
+                    .appendText(LanguageUtils.addArticle(type.name().toLowerCase()))
+                    .appendText(" node, but ")
+                    .appendText(LanguageUtils.addArticle(item.getNodeType().name().toLowerCase()))
+                    .appendText(" node");
+            return false;
+        }
+    }
+
+    protected abstract boolean matchesNode(A node, Description mismatchDescription);
 }

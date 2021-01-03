@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,88 +35,80 @@ import org.junit.Test;
 
 public class IsJsonTextTest {
 
-  private static final JsonNodeFactory NF = JsonNodeFactory.instance;
+    private static final JsonNodeFactory NF = JsonNodeFactory.instance;
 
-  @Test
-  public void testType() throws Exception {
-    final Matcher<JsonNode> sut = jsonText();
+    @Test
+    public void testType() throws Exception {
+        final Matcher<JsonNode> sut = jsonText();
 
-    assertThat(NF.textNode("foo"), is(sut));
-  }
+        assertThat(NF.textNode("foo"), is(sut));
+    }
 
-  @Test
-  public void testLiteral() throws Exception {
-    final Matcher<JsonNode> sut = jsonText(NF.textNode("foo"));
+    @Test
+    public void testLiteral() throws Exception {
+        final Matcher<JsonNode> sut = jsonText(NF.textNode("foo"));
 
-    assertThat(NF.textNode("foo"), is(sut));
-  }
+        assertThat(NF.textNode("foo"), is(sut));
+    }
 
-  @Test
-  public void testString() throws Exception {
-    final Matcher<JsonNode> sut = jsonText("foo");
+    @Test
+    public void testString() throws Exception {
+        final Matcher<JsonNode> sut = jsonText("foo");
 
-    assertThat(NF.textNode("foo"), is(sut));
-  }
+        assertThat(NF.textNode("foo"), is(sut));
+    }
 
-  @Test
-  public void testIsEmptyString() throws Exception {
-    final Matcher<JsonNode> sut = jsonText(isEmptyString());
+    @Test
+    public void testIsEmptyString() throws Exception {
+        final Matcher<JsonNode> sut = jsonText(isEmptyString());
 
-    assertThat(NF.textNode(""), is(sut));
-  }
+        assertThat(NF.textNode(""), is(sut));
+    }
 
-  @Test
-  public void testIsEmptyOrNullString() throws Exception {
-    final Matcher<JsonNode> sut = jsonText(isEmptyOrNullString());
+    @Test
+    public void testIsEmptyOrNullString() throws Exception {
+        final Matcher<JsonNode> sut = jsonText(isEmptyOrNullString());
 
-    assertThat(NF.textNode(""), is(sut));
-  }
+        assertThat(NF.textNode(""), is(sut));
+    }
 
-  @Test
-  public void testMismatchElements() throws Exception {
-    final Matcher<JsonNode> sut = jsonText(is("a"));
+    @Test
+    public void testMismatchElements() throws Exception {
+        final Matcher<JsonNode> sut = jsonText(is("a"));
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.textNode("foo"), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.textNode("foo"), description);
 
-    assertThat(description.toString(), is(
-        "was a text node with value that was \"foo\""
-    ));
-  }
+        assertThat(description.toString(), is("was a text node with value that was \"foo\""));
+    }
 
-  @Test
-  public void testMismatchType() throws Exception {
-    final Matcher<JsonNode> sut = jsonText(is("a"));
+    @Test
+    public void testMismatchType() throws Exception {
+        final Matcher<JsonNode> sut = jsonText(is("a"));
 
-    final StringDescription description = new StringDescription();
-    sut.describeMismatch(NF.booleanNode(false), description);
+        final StringDescription description = new StringDescription();
+        sut.describeMismatch(NF.booleanNode(false), description);
 
-    assertThat(description.toString(), is(
-        "was not a string node, but a boolean node"
-    ));
-  }
+        assertThat(description.toString(), is("was not a string node, but a boolean node"));
+    }
 
-  @Test
-  public void testDescription() throws Exception {
-    final Matcher<JsonNode> sut = jsonText(is(anything()));
+    @Test
+    public void testDescription() throws Exception {
+        final Matcher<JsonNode> sut = jsonText(is(anything()));
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "a text node with value that is ANYTHING"
-    ));
-  }
+        assertThat(description.toString(), is("a text node with value that is ANYTHING"));
+    }
 
-  @Test
-  public void testDescriptionForEmptyConstructor() throws Exception {
-    final Matcher<JsonNode> sut = jsonText();
+    @Test
+    public void testDescriptionForEmptyConstructor() throws Exception {
+        final Matcher<JsonNode> sut = jsonText();
 
-    final StringDescription description = new StringDescription();
-    sut.describeTo(description);
+        final StringDescription description = new StringDescription();
+        sut.describeTo(description);
 
-    assertThat(description.toString(), is(
-        "a text node with value that is ANYTHING"
-    ));
-  }
+        assertThat(description.toString(), is("a text node with value that is ANYTHING"));
+    }
 }
