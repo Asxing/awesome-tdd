@@ -1,14 +1,15 @@
 /**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
  *
- * Copyright 2012-2016 the original author or authors.
+ * <p>Copyright 2012-2016 the original author or authors.
  */
 package org.assertj.examples;
 
@@ -27,42 +28,39 @@ import org.junit.jupiter.api.Test;
 
 public class PredicateAssertionsExamples extends AbstractAssertionsExamples {
 
-  @Test
-  public void predicate_assertions_examples() {
-    Predicate<TolkienCharacter> hobbitPredicate = character -> character.getRace() == HOBBIT;
+    @Test
+    public void predicate_assertions_examples() {
+        Predicate<TolkienCharacter> hobbitPredicate = character -> character.getRace() == HOBBIT;
 
-    assertThat(hobbitPredicate).accepts(frodo)
-                               .accepts(frodo, sam, pippin)
-                               .rejects(sauron)
-                               .rejects(sauron, aragorn)
-                               .acceptsAll(newArrayList(frodo, sam, pippin))
-                               .rejectsAll(newArrayList(sauron, gandalf, aragorn));
+        assertThat(hobbitPredicate)
+                .accepts(frodo)
+                .accepts(frodo, sam, pippin)
+                .rejects(sauron)
+                .rejects(sauron, aragorn)
+                .acceptsAll(newArrayList(frodo, sam, pippin))
+                .rejectsAll(newArrayList(sauron, gandalf, aragorn));
 
-    Predicate<String> ballSportPredicate = sport -> sport.contains("ball");
+        Predicate<String> ballSportPredicate = sport -> sport.contains("ball");
 
-    // assertion succeeds:
-    assertThat(ballSportPredicate).accepts("football")
-                                  .accepts("football", "basketball", "handball");
-  }
+        // assertion succeeds:
+        assertThat(ballSportPredicate)
+                .accepts("football")
+                .accepts("football", "basketball", "handball");
+    }
 
-  @Test
-  public void primitives_predicate_assertions_examples() {
-    IntPredicate evenNumber = n -> n % 2 == 0;
+    @Test
+    public void primitives_predicate_assertions_examples() {
+        IntPredicate evenNumber = n -> n % 2 == 0;
 
-    assertThat(evenNumber).accepts(4)
-                          .rejects(3)
-                          .accepts(2, 4, 6)
-                          .rejects(1, 3, 5);
+        assertThat(evenNumber).accepts(4).rejects(3).accepts(2, 4, 6).rejects(1, 3, 5);
 
-    DoublePredicate tallSize = size -> size > 1.90;
-    assertThat(tallSize).accepts(1.95, 2.00, 2.05);
-  }
+        DoublePredicate tallSize = size -> size > 1.90;
+        assertThat(tallSize).accepts(1.95, 2.00, 2.05);
+    }
 
-  @Test
-  public void should_not_produce_warning_for_varargs_parameter() {
-    Predicate<Map.Entry<String, String>> predicate = entry -> entry.getKey().equals("A");
-    assertThat(predicate).accepts(Pair.of("A", "B"))
-                         .rejects(Pair.of("C", "D"));
-  }
-
+    @Test
+    public void should_not_produce_warning_for_varargs_parameter() {
+        Predicate<Map.Entry<String, String>> predicate = entry -> entry.getKey().equals("A");
+        assertThat(predicate).accepts(Pair.of("A", "B")).rejects(Pair.of("C", "D"));
+    }
 }
